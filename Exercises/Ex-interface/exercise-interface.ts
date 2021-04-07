@@ -88,7 +88,7 @@ const Exercise2 = () => {
 
   
 
-  function getCityInfo (city: Coords) {
+  function getCityInfo (city: City) {
     const coords = `(${city.coords.latitude.toFixed(3)}, ${city.coords.longitude.toFixed(3)})`
     return `${city.name.toUpperCase()} is located at ${coords}.`
   }

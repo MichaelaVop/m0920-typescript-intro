@@ -13,7 +13,12 @@ const Exercise2 = () => {
   // • Create an interface `CartItem` and replace the param's type with it
   // • Make variantId optional
 
-  function addToCart(item: { id: number; title: string; variantId: number }) {
+  interface CartItem {
+    id: number;
+    title: string; 
+    variantId?: number
+  }
+  function addToCart(item: CartItem) {
     console.log('[Exercise 2.1]', `Adding "${item.title}" to cart.`)
   }
 
@@ -24,13 +29,23 @@ const Exercise2 = () => {
   // • Create and implement an interface on `Person` to ensure it always has accessible
   //   `name` and `age` member properties.
 
-  class Person {
-    constructor(public name: string, public age: number) {}
+  interface Person {
+    name: string; 
+    age: number
   }
 
-  const jane = new Person('Jane', 31)
+  const firstPersonJane = {
+    name: 'Jane',
+    age: 31
+  }
 
-  console.log('[Exercise 2.2]', `${jane.name} is ${jane.age} years old.`)
+  const newPerson = (person: Person): void => {
+    console.log('[Exercise 2.2]', `${person.name} is ${person.age} years old.`)
+  }
+  
+  newPerson(firstPersonJane)
+
+  
 
   // ======== Exercise 2.3 ========
   // Instructions:
@@ -45,6 +60,16 @@ const Exercise2 = () => {
   }
   // [/do not edit]
 
+  interface Coords extends City{
+      
+      latitude: number;
+      longitude: number;  
+  }
+  
+  interface City {
+    coords: Coords
+  }
+
   const montreal = {
     coords: {
       latitude: 42.332,
@@ -55,16 +80,16 @@ const Exercise2 = () => {
 
   const tampa = {
     coords: {
-      latitude: '27.9478',
-      longitude: '-82.4584',
+      latitude: 27.9478,
+      longitude: -82.4584,
     },
     name: 'Tampa',
   }
 
-  function getCityInfo(city: City) {
-    const coords = `(${city.coords.latitude.toFixed(
-      3
-    )}, ${city.coords.longitude.toFixed(3)})`
+  
+
+  function getCityInfo (city: Coords) {
+    const coords = `(${city.coords.latitude.toFixed(3)}, ${city.coords.longitude.toFixed(3)})`
     return `${city.name.toUpperCase()} is located at ${coords}.`
   }
 

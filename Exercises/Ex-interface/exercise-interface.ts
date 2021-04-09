@@ -60,8 +60,8 @@ const Exercise2 = () => {
   }
   // [/do not edit]
 
-  interface Coords extends City{
-      
+  interface Coords{
+ 
       latitude: number;
       longitude: number;  
   }
